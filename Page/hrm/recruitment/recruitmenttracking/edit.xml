@@ -1,0 +1,190 @@
+<SFPAGE TITLE="Edit Recruitment Tracking" ACCESS="cli.hrm.recruitment.recruitmenttracking:edit">
+    <SFFORM TITLE="Edit Recruitment Tracking" DATASOURCE="CL_Tracking.viewEditTracking" ACTION="Edit" NAME="FromEditRecruitmentTracking" HEIGHT="500" WIDTH="900">
+        <TOOLBAR>
+			<BUTTON TYPE="Help"></BUTTON>
+			<BUTTON TYPE="Close"></BUTTON>
+		</TOOLBAR>
+        <FIELDSET>
+            <INPUT LABEL="" TYPE="hidden" NAME="applicant_id" PARAM="applicant_id"/>
+            <INPUT LABEL="Applicant Name" TYPE="text" NAME="first_name" PARAM="first_name" LABELTEXT="First name" SIZE="20" REQUIRED="Yes" GROUP="APPNAME" ERRMSG="Please Enter Valid Name"/>
+            <INPUT LABEL="" TYPE="text" NAME="middle_name" PARAM="middle_name" LABELTEXT="Middle name" SIZE="20" GROUP="APPNAME~"/>
+            <INPUT LABEL="" TYPE="text" NAME="last_name" PARAM="last_name" LABELTEXT="Last name" SIZE="20" GROUP="APPNAME~"/>
+            <INPUT LABEL="Gender" TYPE="radio" NAME="gender" PARAM="gender" OPTIONS="1*=Male|0=Famale" REQUIRED="Yes"/>
+            <INPUT LABEL="Mobile Phone (WA)" TYPE="text" NAME="phone" PARAM="phone" REQUIRED="Yes" ERRMSG="Please Provide Valid Phone Number" TRAILTEXT="Single Input (628231112xxxx)"/>
+            <INPUT LABEL="Email" TYPE="email" NAME="email" PARAM="email" REQUIRED="Yes" ERRMSG="Please Input a Valid Entry for Email" TRAILTEXT="@xxxxx.xxx"/>
+            <INPUT LABEL="No. KTP" TYPE="text" NAME="identity_no" PARAM="identity_no" TRAILTEXT="16 digit"/>
+            <INPUT LABEL="Photo" NAME="photo_attachment" PARAM="photo" TYPE="DOWNLINK" SETTINGS="jpg~apptracking_photo"/>
+            <INPUT LABEL="" TYPE="file" NAME="photo" PARAM="photo"/>
+            <INPUT LABEL="" TYPE="label" NAME="extApplicantPhoto" PARAM="extApplicantPhoto"/>
+            <INPUT LABEL="" NAME="app_photo" PARAM="photo" TYPE="HIDDEN"/>
+            <INPUT LABEL="CV" NAME="cv_attachment" PARAM="cv" TYPE="DOWNLINK" SETTINGS="doc~apptracking_pdf"/>
+            <INPUT LABEL="" TYPE="file" NAME="cv" PARAM="cv"/>
+            <INPUT LABEL="" TYPE="label" NAME="extApplicantCV" PARAM="extApplicantCV"/>
+            <INPUT LABEL="" NAME="app_cv" PARAM="cv" TYPE="HIDDEN"/>
+            <INPUT LABEL="Position Applied" TYPE="SUGGEST" NAME="position_applied" PARAM="position_applied" LISTSOURCE="CL_Tracking.suggestPosition"/>
+            <INPUT LABEL="Recruiter" TYPE="SUGGEST" NAME="recruiter" PARAM="recruiter" LISTSOURCE="CL_Tracking.suggestRecruiter"/>
+            <INPUT LABEL="Status" TYPE="SUGGEST" NAME="status" PARAM="status_app" LISTSOURCE="CL_Tracking.suggestStatus"/>
+            <INPUT LABEL="Estimasi Join Date" TYPE="date" NAME="est_join_date" PARAM="est_join_date"/>
+            <INPUT LABEL="PTK Applied" TYPE="text" NAME="ptk_applied" PARAM="ptk_applied"/>
+            <INPUT LABEL="SUBMIT" TYPE="SUBMIT" NAME="SAVE" VALUE="SAVE" />
+        </FIELDSET>
+        <TABPAGE HEIGH="300" WIDTH="900">
+            <TABROW>
+                <TAB LABEL="Per Eliminary">
+                    <FIELDSET LABEL="Per Eliminary">
+                        <INPUT LABEL="Date" TYPE="date" NAME="pe_date" PARAM="pe_date"/>
+                        <INPUT LABEL="Status" TYPE="select" NAME="pe_status" PARAM="pe_status" LISTSOURCE="CL_Tracking.optStatus"/>
+                        <INPUT LABEL="notes" TYPE="MEMO" NAME="pe_noted" PARAM="pe_noted" COL="50" ROW="5" MAXLEN="255"/>
+                        <INPUT LABEL="File" NAME="pe_file_attachment" PARAM="pe_file" TYPE="DOWNLINK" SETTINGS="doc~apptracking_pdf"/>
+                        <INPUT LABEL="" TYPE="file" NAME="pe_file" PARAM="pe_file"/>
+                        <INPUT LABEL="" TYPE="label" NAME="extApplicantFile" PARAM="extApplicantFile"/>
+                        <INPUT LABEL="" NAME="app_pe_file" PARAM="pe_file" TYPE="HIDDEN"/>
+                    </FIELDSET>
+                </TAB>
+                <TAB LABEL="Interview">
+                    <FIELDSET LABEL="Interview">
+                        <INPUT LABEL="Date" TYPE="date" NAME="in_date" PARAM="in_date"/>
+                        <INPUT LABEL="Status" TYPE="select" NAME="in_status" PARAM="in_status" LISTSOURCE="CL_Tracking.optStatus"/>
+                        <INPUT LABEL="notes" TYPE="MEMO" NAME="in_noted" PARAM="in_noted" COL="50" ROW="5" MAXLEN="255"/>
+                        <INPUT LABEL="File" NAME="in_file_attachment" PARAM="in_file" TYPE="DOWNLINK" SETTINGS="doc~apptracking_pdf"/>
+                        <INPUT LABEL="" TYPE="file" NAME="in_file" PARAM="in_file"/>
+                        <INPUT LABEL="" TYPE="label" NAME="extApplicantFile" PARAM="extApplicantFile"/>
+                        <INPUT LABEL="" NAME="app_in_file" PARAM="in_file" TYPE="HIDDEN"/>
+                    </FIELDSET>
+                </TAB>
+                <TAB LABEL="Nego">
+                    <FIELDSET LABEL="Nego" >
+                        <INPUT LABEL="Date" TYPE="date" NAME="ne_date" PARAM="ne_date"/>
+                        <INPUT LABEL="Status" TYPE="select" NAME="ne_status" PARAM="ne_status" LISTSOURCE="CL_Tracking.optStatus"/>
+                        <INPUT LABEL="notes" TYPE="MEMO" NAME="ne_noted" PARAM="ne_noted" COL="50" ROW="5" MAXLEN="255"/>
+                        <INPUT LABEL="File" NAME="ne_file_attachment" PARAM="ne_file" TYPE="DOWNLINK" SETTINGS="doc~apptracking_pdf"/>
+                        <INPUT LABEL="" TYPE="file" NAME="ne_file" PARAM="ne_file"/>
+                        <INPUT LABEL="" TYPE="label" NAME="extApplicantFile" PARAM="extApplicantFile"/>
+                        <INPUT LABEL="" NAME="app_ne_file" PARAM="ne_file" TYPE="HIDDEN"/>
+                    </FIELDSET>
+                </TAB>
+                <TAB LABEL="Medical Check Up">
+                    <FIELDSET LABEL="Medical Check Up" >
+                        <INPUT LABEL="Date" TYPE="date" NAME="medic_date" PARAM="medic_date"/>
+                        <INPUT LABEL="Status" TYPE="select" NAME="medic_status" PARAM="medic_status" LISTSOURCE="CL_Tracking.optStatus"/>
+                        <INPUT LABEL="notes" TYPE="MEMO" NAME="medic_noted" PARAM="medic_noted" COL="50" ROW="5" MAXLEN="255"/>
+                        <INPUT LABEL="File" NAME="medic_file_attachment" PARAM="medic_file" TYPE="DOWNLINK" SETTINGS="doc~apptracking_pdf"/>
+                        <INPUT LABEL="" TYPE="file" NAME="medic_file" PARAM="medic_file"/>
+                        <INPUT LABEL="" TYPE="label" NAME="extApplicantFile" PARAM="extApplicantFile"/>
+                        <INPUT LABEL="" NAME="app_medic_file" PARAM="medic_file" TYPE="HIDDEN"/>
+                    </FIELDSET>
+                </TAB>
+                <TAB LABEL="Document Approval">
+                    <FIELDSET LABEL="Document Approval" >
+                        <INPUT LABEL="Date" TYPE="date" NAME="doc_date" PARAM="doc_date"/>
+                        <INPUT LABEL="Status" TYPE="select" NAME="doc_status" PARAM="doc_status" LISTSOURCE="CL_Tracking.optStatus"/>
+                        <INPUT LABEL="notes" TYPE="MEMO" NAME="doc_noted" PARAM="doc_noted" COL="50" ROW="5" MAXLEN="255"/>
+                        <INPUT LABEL="File" NAME="doc_file_attachment" PARAM="doc_file" TYPE="DOWNLINK" SETTINGS="doc~apptracking_pdf"/>
+                        <INPUT LABEL="" TYPE="file" NAME="doc_file" PARAM="doc_file"/>
+                        <INPUT LABEL="" TYPE="label" NAME="extApplicantFile" PARAM="extApplicantFile"/>
+                        <INPUT LABEL="" NAME="app_doc_file" PARAM="doc_file" TYPE="HIDDEN"/>
+                    </FIELDSET>
+                </TAB>
+                 <TAB LABEL="Offering/SPK">
+                    <FIELDSET LABEL="Offering/SPK" >
+                        <INPUT LABEL="Date" TYPE="date" NAME="off_date" PARAM="off_date"/>
+                        <INPUT LABEL="Status" TYPE="select" NAME="off_status" PARAM="off_status" LISTSOURCE="CL_Tracking.optStatus"/>
+                        <INPUT LABEL="notes" TYPE="MEMO" NAME="off_noted" PARAM="off_noted" COL="50" ROW="5" MAXLEN="255"/>
+                        <INPUT LABEL="File" NAME="off_file_attachment" PARAM="off_file" TYPE="DOWNLINK" SETTINGS="doc~apptracking_pdf"/>
+                        <INPUT LABEL="" TYPE="file" NAME="off_file" PARAM="off_file"/>
+                        <INPUT LABEL="" TYPE="label" NAME="extApplicantFile" PARAM="extApplicantFile"/>
+                        <INPUT LABEL="" NAME="app_off_file" PARAM="off_file" TYPE="HIDDEN"/>
+                    </FIELDSET>
+                </TAB>
+            </TABROW>
+        </TABPAGE>
+        <SCRIPT FOR="FOOTER">
+            document.getElementById('inp_photo').accept = 'image/*';
+            document.getElementById('inp_cv').accept = '.pdf';
+            document.getElementById('inp_pe_file').accept = '.pdf';
+            document.getElementById('inp_in_file').accept = '.pdf';
+            document.getElementById('inp_ne_file').accept = '.pdf';
+            document.getElementById('inp_medic_file').accept = '.pdf';
+            document.getElementById('inp_doc_file').accept = '.pdf';
+            document.getElementById('inp_off_file').accept = '.pdf';
+            
+            var app_photo = $('##inp_app_photo').val();
+			if(app_photo == ''){
+			    $sf('tr_inp_photo_attachment').style.display='none';
+			    document.getElementById('lbl_inp_photo').innerHTML = 'Photo';
+			}
+            
+            var app_cv = $('##inp_app_cv').val();
+			if(app_cv == ''){
+			    $sf('tr_inp_cv_attachment').style.display='none';
+			    document.getElementById('lbl_inp_cv').innerHTML = 'CV';
+			}
+
+            var app_pe_file = $('##inp_app_pe_file').val();
+			if(app_pe_file == ''){
+			    $sf('tr_inp_pe_file_attachment').style.display='none';
+			    document.getElementById('lbl_inp_pe_file').innerHTML = 'File';
+			}
+
+            var app_in_file = $('##inp_app_in_file').val();
+			if(app_in_file == ''){
+			    $sf('tr_inp_in_file_attachment').style.display='none';
+			    document.getElementById('lbl_inp_in_file').innerHTML = 'File';
+			}
+
+            var app_ne_file = $('##inp_app_ne_file').val();
+			if(app_ne_file == ''){
+			    $sf('tr_inp_ne_file_attachment').style.display='none';
+			    document.getElementById('lbl_inp_ne_file').innerHTML = 'File';
+			}
+
+            var app_medic_file = $('##inp_app_medic_file').val();
+			if(app_medic_file == ''){
+			    $sf('tr_inp_medic_file_attachment').style.display='none';
+			    document.getElementById('lbl_inp_medic_file').innerHTML = 'File';
+			}
+
+            var app_doc_file = $('##inp_app_doc_file').val();
+			if(app_doc_file == ''){
+			    $sf('tr_inp_doc_file_attachment').style.display='none';
+			    document.getElementById('lbl_inp_doc_file').innerHTML = 'File';
+			}
+
+            var app_off_file = $('##inp_app_off_file').val();
+			if(app_off_file == ''){
+			    $sf('tr_inp_off_file_attachment').style.display='none';
+			    document.getElementById('lbl_inp_off_file').innerHTML = 'File';
+			}
+
+            function validateOther(){
+                var first_name = $('##inp_first_name').val();
+                if(first_name == ''){
+                    alert('[SFTEXT:ERValid First Name don't be empty.]');
+				    return false;
+                }
+
+                var phone = $('##inp_phone').val().length();
+                if(phone == 0){
+                    alert('[SFTEXT:ERValid Applicant Phone don't be empty.]');
+				    return false;
+                }
+ 
+                var email = $('##inp_email').val();
+                if(email == ''){
+                    alert('[SFTEXT:ERValid Email don't be empty.]');
+				    return false;
+                }
+
+                var identity_no = $('##inp_identity_no').val();
+                if(identity_no > 1 && identity_no < 16){
+                    alert('[SFTEXT:ERValid No. KTP don't less than 16 characters]');
+				    return false;
+                }
+ 
+            }
+        </SCRIPT>
+        <BUTTONLIST>
+            <BUTTON TYPE="Submit"></BUTTON>
+        </BUTTONLIST>
+    </SFFORM>
+</SFPAGE>

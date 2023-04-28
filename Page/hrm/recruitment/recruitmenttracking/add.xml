@@ -1,0 +1,58 @@
+<SFPAGE TITLE="Add Recruitment Tracking" ACCESS="cli.hrm.recruitment.recruitmenttracking:add">
+    <SFFORM TITLE="Add Recruitment Tracking" DATASOURCE="CL_Tracking.getAddDetail" ACTION="Add" NAME="FromAddRecruitmentTracking" HEIGHT="500" WIDTH="900">
+        <TOOLBAR>
+			<BUTTON TYPE="Help"></BUTTON>
+			<BUTTON TYPE="Close"></BUTTON>
+		</TOOLBAR>
+        <FIELDSET>
+            <INPUT LABEL="Applicant Name" TYPE="text" NAME="first_name" LABELTEXT="First name" SIZE="20" REQUIRED="Yes" GROUP="APPNAME" ERRMSG="Please Enter Valid Name"/>
+            <INPUT LABEL="" TYPE="text" NAME="middle_name" LABELTEXT="Middle name" SIZE="20" GROUP="APPNAME~"/>
+            <INPUT LABEL="" TYPE="text" NAME="last_name" LABELTEXT="Last name" SIZE="20" GROUP="APPNAME~"/>
+            <INPUT LABEL="Gender" TYPE="radio" NAME="gender" PARAM="gender" OPTIONS="1*=Male|0=Famale" REQUIRED="Yes"/>
+            <INPUT LABEL="Mobile Phone (WA)" TYPE="text" NAME="phone" PARAM="phone" REQUIRED="Yes" ERRMSG="Please Provide Valid Phone Number" TRAILTEXT="Single Input (628231112xxx)"/>
+            <INPUT LABEL="Email" TYPE="email" NAME="email" PARAM="email" REQUIRED="Yes" ERRMSG="Please Input a Valid Entry for Email" TRAILTEXT="@xxxxx.xxx"/>
+            <INPUT LABEL="No. KTP" TYPE="text" NAME="identity_no" PARAM="identity_no" TRAILTEXT="16 digit"/>
+            <INPUT LABEL="Photo" TYPE="file" NAME="photo" PARAM="photo"/>
+            <INPUT LABEL="" TYPE="label" NAME="extApplicantPhoto" PARAM="extApplicantPhoto"/>
+            <INPUT LABEL="CV" TYPE="file" NAME="cv" PARAM="cv"/>
+            <INPUT LABEL="" TYPE="label" NAME="extApplicantCV" PARAM="extApplicantCV"/>
+            <INPUT LABEL="Position Applied" TYPE="SUGGEST" NAME="position_applied" PARAM="position_applied" LISTSOURCE="CL_Tracking.suggestPosition"/>
+            <INPUT LABEL="Recruiter" TYPE="SUGGEST" NAME="recruiter" PARAM="recruiter" LISTSOURCE="CL_Tracking.suggestRecruiter"/>
+        </FIELDSET>
+        <SCRIPT>
+            document.getElementById('inp_photo').accept = 'image/*';
+            document.getElementById('inp_cv').accept = '.pdf';
+            document.getElementById('inp_identity_no').onkeypress = 'if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;';
+            
+            function validateOther(){
+                var identity_no = $('##inp_identity_no').val().length;
+                if(identity_no > 1 && identity_no < 16){
+                    alert('[SFTEXT:ERValid No. KTP don't less than 16 characters]');
+				    return false;
+                }
+
+                var first_name = $('##inp_first_name').val();
+                if(first_name == ''){
+                    alert('[SFTEXT:ERValid Applicant Name don't be empty.]');
+				    return false;
+                }
+
+                var mobile_phone = $('##inp_phone').val().length;
+                if(mobile_phone == 0){
+                    alert('[SFTEXT:ERValid Mobile Phone don't be empty.]');
+				    return false;
+                }
+
+                var email = $('##inp_email').val();
+                if(email == ''){
+                    alert('[SFTEXT:ERValid Email don't be empty.]');
+				    return false;
+                }
+            }
+        </SCRIPT>
+        <BUTTONLIST>
+			<BUTTON TYPE="Cancel"></BUTTON>
+			<BUTTON TYPE="Submit"></BUTTON>
+		</BUTTONLIST>
+    </SFFORM>
+</SFPAGE>

@@ -1,0 +1,63 @@
+<SFPAGE TITLE="Recruitment Tracking" ACCESS="cli.hrm.recruitment.recruitmenttracking:read">
+    <SFGRID DATASOURCE="CL_Tracking" TITLE="Recruitment Tracking">
+        <TOOLBAR>
+            <BUTTON TYPE="Add"></BUTTON>
+            <BUTTON TYPE="Print"></BUTTON>
+            <BUTTON TYPE="PDF"></BUTTON>
+            <BUTTON TYPE="Excel"></BUTTON>
+            <BUTTON TYPE="Reload"></BUTTON>
+            <BUTTON TYPE="Help"></BUTTON>
+        </TOOLBAR>
+        <COLUMN TITLE="Register Date" FIELD="register_date"></COLUMN>
+        <COLUMN TITLE="Applicant Name" FIELD="applicant_name" LINK="cli.hrm.recruitment.recruitmenttracking.edit?applicant_id=[applicant_id]"  LINKTYPE="INNERPOP" WIDTH="200"></COLUMN> 
+        <COLUMN TITLE="Position" FIELD="position" WIDTH="250"></COLUMN>
+        <COLUMN TITLE="Recruiter" FIELD="recruiter" WIDTH="250"></COLUMN>
+        <COLUMN TITLE="Phone" FIELD="phone" LINK="?sfid=cli.hrm.recruitment.recruitmenttracking.applicantwhatsapp&amp;applicant_id=[applicant_id]&amp;whatsapp=[phone]" LINKTYPE="POP" WITH="150"></COLUMN>
+        <COLUMN TITLE="Email" FIELD="email" FORMAT="semail" LINK="" WIDTH="200"></COLUMN>   
+        <COLUMN TITLE="CV" FIELD="cv" LINK="" WIDTH="250"></COLUMN>
+        <COLUMN TITLE="Last Progress" FIELD="last_progress" WIDTH="200"></COLUMN>
+        <COLUMN TITLE="Status" FIELD="status" WIDTH="150"></COLUMN>
+        <COLUMN TITLE="Last Progress Date" FIELD="last_progress_date" WIDTH="200"></COLUMN>
+        <COLUMN TITLE="Applicant Apply" FIELD="applicant_apply" INFOTIP="applicant_apply" LINK="" LINKTYPE="tipinfo" WIDTH="400">
+            <INFOTIPTPL>
+                <![CDATA[<table width="500px"><tr>
+                    <td valign="top" width="250px">
+                        <img src="[photo]" data-haserror="" onerror="if(this.dataset.haserror==''){this.dataset.haserror=1;this.src='?sfid=sys.util.getfile&amp;code=appphoto&amp;thumb=1&amp;fname=[photo]'}" width="100" border="0"/>	    			 
+                    </td>
+                    <td valign="top">
+                        <b>[applicant_name]</b><br/>
+                        +[phone]<br/>
+                        [identityno]<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        User : [email]
+                    </td>
+                    <td>
+                        Password : [password]
+                    </td>
+                    <td>
+                        [BUTTONLIST]
+                    </td>
+                </tr>
+                <tr style="margin-top: 20px;">
+                    <td>Status:[desc_status]</td>
+                </tr>
+            </table>]]>
+                <INFOTIPTPLBUTTON>
+                    <INFOTIPTPLBTN TEXT="Reset Password" ICON="icon-profile.png" TITLE="Reset Password" LINK="" LINKTYPE="POP"></INFOTIPTPLBTN>
+                </INFOTIPTPLBUTTON>
+            </INFOTIPTPL>
+        </COLUMN>
+        <COLUMN TITLE="Per-Eliminary" FIELD="per_eliminary" LINK="" LINKTYPE="POP" WIDTH="400"></COLUMN>
+        <COLUMN TITLE="Interview" FIELD="interview" LINK="" LINKTYPE="POP" WIDTH="400"></COLUMN>
+        <COLUMN TITLE="Nego" FIELD="nego" LINK="" WIDTH="400"></COLUMN>
+        <COLUMN TITLE="Medical Check Up" FIELD="medical_checkup" LINK="" LINKTYPE="POP" WIDTH="400"></COLUMN>
+        <COLUMN TITLE="Document Approval" FIELD="document_approval" LINK="" LINKTYPE="POP" WIDTH="400"></COLUMN>
+        <COLUMN TITLE="Offering/SPK" FIELD="offering" LINK="" LINKTYPE="POP" WIDTH="400"></COLUMN>
+        <SCRIPT FOR="HEADER">
+			var photopath =trim(`#APPLICATION.SFUtil.useclientdir('?sfid=sys.util.getfile&amp;code=appphoto&amp;thumb=1&amp;fname=')#`)
+		</SCRIPT>
+    </SFGRID>
+</SFPAGE>
